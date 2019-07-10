@@ -1,0 +1,96 @@
+
+
+#############################################Prime_factorization_of_A_number.########################################################
+#Prime_factorization_of_A_number.
+10 = 5*2;
+Here in 10 there are two prime factor they are 5 and 2.Five is one time and 2 is one time.
+8 = 2*2*2*2; 
+In 8 there one prime factor that is 2.And there two is 4 times.
+soo,if you want find this here is a efficient code for competitive programming contest.
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+vector<int>v;
+int r=0;
+void seive(int n)
+{
+
+    bool prime[n+1];
+    memset(prime, true, sizeof(prime));
+
+    for (int p=2; p*p<=n; p++)
+    {
+
+        if (prime[p] == true)
+        {
+
+            for (int i=p*p; i<=n; i += p)
+                prime[i] = false;
+        }
+    }
+
+
+    for (int p=2; p<=n; p++)
+    {
+        if (prime[p])
+        {
+            v.push_back(p);
+            r++;
+        }
+
+
+    }
+
+}
+int main()
+{
+
+    int a[10000];
+    int n;
+    memset(a,0,10000);
+    cin>>n;
+    seive(n);//making all The primes of n
+    int  i;
+
+    int temp=n;
+
+    //Finding all the factors of N with how many times they have power
+    // 4= 2^2*1^1;
+    while(temp!=1)
+    {
+        for(int j=v.size()-1; j>=0; j--)
+        {
+            if(temp%v[j]==0)
+            {
+                temp=temp/v[j];
+                a[v[j]]++;
+            }
+
+        }
+    }
+// N and all the factors of N with how many times they have power
+    cout<<n<<" =";
+    for(i=1; i<=n; i++)
+    {
+
+            if(a[i]>0)
+            {
+  
+                 if(r==1)
+                 {
+                      cout<<i<<" ("<<a[i]<<")";
+                 }
+                 else
+                 {
+                    cout<<i<<" ("<<a[i]<<") ";
+                 }
+                 r--;
+
+            }
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
