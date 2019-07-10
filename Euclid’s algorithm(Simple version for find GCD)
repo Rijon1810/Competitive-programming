@@ -1,0 +1,33 @@
+Euclid’s algorithm1 provides an efficient way to find the greatest common
+divisor of two numbers. The algorithm is based on the following formula:
+gcd(a,b) Æ
+(
+a b Æ 0
+gcd(b,a mod b) b 6Æ 0
+For example,
+gcd(24,36) Æ gcd(36,24) Æ gcd(24,12) Æ gcd(12,0) Æ 12.
+https://paste.ubuntu.com/p/CrT9JGpvJz/
+--------------------------------------------------------------------------------------------------------------------------------------
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+//only  for Big numbers
+
+
+
+ll gcd(ll a, ll b)
+{
+    if (b == 0)
+        return a;
+    return gcd(b, a%b);
+}
+
+int main()
+{
+    ll a,b;
+    cin>>a>>b;
+    cout<<gcd(min(a,b),max(a,b))<<endl;;
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------
