@@ -1,0 +1,51 @@
+
+#################################How many digits are there in N! Factorial?################################################################
+
+We know, digit number of x at 10 based number system = ⌊log10x⌋ + 1.
+Similarly, the digit number of x in the number of b based number system = ⌊logbx⌋ + 1.
+
+Ans =∴logbn=(log10N! / log10b)
+
+Since, N! = 1 * 2 * 3 * 4 * .......... * N, therefore,
+log10 (N!) = log101 + log102 + .......... + log10N
+
+https://pastebin.com/Vdi2bt0f
+--------------------------------------------------------------------------------------------------------------------
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+double arr[1000010];
+
+int main()
+{
+
+    for(ll i = 1; i <= 1000010; i++)
+    {
+        arr[i] = arr[i - 1] + log(i); //Cumalitive sum  of N!=log(1)+log(2)+.....+Log(N);
+    }
+
+        ll n, b;
+        cout<<"Enter N! and Base"<<endl;
+        cin>>n>>b;
+        ll ans = (arr[n] / log(b) ) + 1;
+
+        printf("%lld\n",ans);
+
+
+    return 0;
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
