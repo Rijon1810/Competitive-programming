@@ -4,7 +4,8 @@
 * Phi is the representation of Euler's Totient function.
 * For a number n, The number of all the numbers from 0 to n that are co-primes of n (greater than 1) is phi.
 * i.e Phi(12)=4, the numbers are 1,2,3,4,5,6,7,8,9,10,11,12, the co-primes of 12 (greater than 1) are 2,3,5, and 7. So the value of phi is 4
-
+https://cp-algorithms.com/algebra/phi-function.html
+----------------------------------------------------------------------------------------------------------------------------------------------
 #include<bits/stdc++.h>
 using namespace std;
 int phi[1000006], prime[1000006]; //declaring the arrays of prime and phi
@@ -48,3 +49,4 @@ int main()
 
     return 0;
 }
+------------------------------------------------------------------------------------------------------------------------------------------
