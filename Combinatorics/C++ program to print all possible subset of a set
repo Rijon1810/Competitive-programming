@@ -1,0 +1,93 @@
+https://www.includehelp.com/cpp-programs/print-all-possible-subset-of-a-set.aspx
+Problem Statement:
+
+Print all possible subset of a set
+
+Example:
+
+    input : {1,2,3,4}
+    output :
+            {}
+            {1}
+            {2}
+            {1,2}
+            {3}
+            {1,3}
+            {2,3}
+            {1,2,3}
+            {4}
+            {1,4}
+            {2,4}
+            {1,2,4}
+            {3,4}
+            {1,3,4}
+            {2,3,4}
+            {1,2,3,4}
+Explanation:
+
+The total number of possible subset a set can have is 2^n, where n is the number of elements in the set.
+
+We can generate all possible subset using binary counter.
+
+For example:
+
+Consider a set 'A' having elements {a, b, c}. So we will generate binary number upto 2^n - 1 (as we will include 0 also).
+
+Here n is 3 so we will generate binary number upto 2^3 - 1 (i.e 8-1 = 7)
+Then we will check which bit in binary counter is set or unset.
+If ith bit is set , include ith element from the set in current subset.
+If ith bit is unset , exclude ith element from the set in current subset.
+Binary counter	subset formed	Explanation
+000	{ }	as all bits are unset , so exclude all
+001	{ a }	as only 1st bit is set , we will include only 1st element from the set i.e 'a'
+010	{ b }	as only 2nd bit is set , we will include only 2nd element from the set i.e 'b'
+011	{ a ,b }	as 1st and 2nd bits are set , we will include 1st and 2nd element from the set i.e 'a' and 'b'
+100	{ c }	as only 3rd bit is set , we will include 3rd element from the set i.e 'c'
+101	{ a ,c }	as 1st and 3rd bits are set , we will include 1st and 3rd element from the set i.e 'a' and 'c'
+110	{ b, c }	as 2nd and 3rd bits are set , we will include 2nd and 3rd element from the set i.e 'b' and 'c'
+111	{ a , b, c }	all bits are set , include all elements from the set.
+
+
+
+Code:
+_____________________________________________________________________________________________________________________________________
+#include <bits/stdc++.h>
+using namespace std;
+
+void allPossibleSubset(int arr[],int n)
+{
+	int  count = pow(2,n);
+	// The outer for loop will run 2^n times to print all subset .
+	// Here variable i will act as a binary counter
+	for (int i = 0; i < count; i++)
+	{
+		// The inner for loop will run n times , As the maximum number of elements a set can have is n
+		// This loop will generate a subset
+		for (int j = 0; j < n; j++)
+		{
+			// This if condition will check if jth bit in binary representation of  i  is set or not
+			// if the value of (i & (1 << j)) is greater than 0 , include arr[j] in the current subset
+			// otherwise exclude arr[j]
+			if ((i & (1 << j)) > 0)
+				cout << arr[j] << " ";
+		}
+		cout << "\n";
+	}
+}
+
+int main()
+{
+	int n;
+	cout << "Enter size of the set\n";
+	cin >> n;
+
+	int arr[n];
+	cout << "Enter Elements of the set\n";
+	for(int i=0;i<n;i++)
+		cin >> arr[i];
+
+	allPossibleSubset(arr,n);
+
+	return 0;
+}
+________________________________________________________________________________________________________________________________________
