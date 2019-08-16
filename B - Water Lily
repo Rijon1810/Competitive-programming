@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long  double   ll;
+int main()
+{
+ 
+    ll L,H;
+    cin>>H>>L;
+    ll ans=(((L*L)-(H*H))/ll(2*H));
+    cout<<fixed<<setprecision(6);
+    cout<<ans<<endl;
+ 
+ 
+ 
+return 0;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+}
